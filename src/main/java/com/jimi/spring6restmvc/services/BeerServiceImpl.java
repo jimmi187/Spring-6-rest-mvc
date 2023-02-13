@@ -88,6 +88,6 @@ public class BeerServiceImpl implements BeerService {
                 .build();
 
         beerMap.put(savedBeer.getId(), savedBeer);
-        return null;
+        return savedBeer;
     }
 }
