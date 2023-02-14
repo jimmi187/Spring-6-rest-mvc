@@ -25,6 +25,9 @@ import java.util.UUID;
 class BeerControllerTest {
 
     @Autowired
+    ObjectMapper objectMapper;
+
+    @Autowired
     MockMvc mockMvc;
 
     @MockBean
@@ -33,9 +36,9 @@ class BeerControllerTest {
     BeerServiceImpl beerServiceImpl = new BeerServiceImpl();
 
     @Test
-    void testCreateNewBeer() throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.findAndRegisterModules(); //this one need to be there cuz config, and of O.M. and date time etc
+   void testCreateNewBeer() throws JsonProcessingException {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.findAndRegisterModules(); //this one need to be there cuz config, and of O.M. and date time etc
         Beer beer = beerServiceImpl.listBeers().get(0);
         System.out.println(objectMapper.writeValueAsString(beer));
     }
