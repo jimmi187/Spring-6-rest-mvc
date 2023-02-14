@@ -1,5 +1,7 @@
 package com.jimi.spring6restmvc.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jimi.spring6restmvc.model.Beer;
 import com.jimi.spring6restmvc.services.BeerService;
 import com.jimi.spring6restmvc.services.BeerServiceImpl;
@@ -29,6 +31,14 @@ class BeerControllerTest {
     BeerService beerService;
 
     BeerServiceImpl beerServiceImpl = new BeerServiceImpl();
+
+    @Test
+    void testCreateNewBeer() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules(); //this one need to be there cuz config, and of O.M. and date time etc
+        Beer beer = beerServiceImpl.listBeers().get(0);
+        System.out.println(objectMapper.writeValueAsString(beer));
+    }
 
     @Test
     void testListBeers() throws Exception {
