@@ -72,7 +72,7 @@ public class BeerController {
 
         log.debug("Get Beer by Id - in controller");
 
-        return beerService.getBeerById(id);
+        return beerService.getBeerById(id).orElseThrow(NotFoundException::new);
     }
 
 }
