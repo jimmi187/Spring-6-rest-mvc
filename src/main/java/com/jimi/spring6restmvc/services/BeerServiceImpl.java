@@ -105,8 +105,10 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
-    public void deleteById(UUID beerId) {
+    public Boolean deleteById(UUID beerId) {
+        boolean res = beerMap.containsKey(beerId);
         beerMap.remove(beerId);
+        return res;
     }
 
     @Override
